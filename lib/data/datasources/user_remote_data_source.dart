@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/widgets.dart';
 import 'package:mobile_user_accurate/common/constants.dart';
 import 'package:mobile_user_accurate/common/exception.dart';
 import 'package:mobile_user_accurate/data/models/user_model.dart';
