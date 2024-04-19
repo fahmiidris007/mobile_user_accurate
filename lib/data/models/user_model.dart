@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:mobile_user_accurate/domain/entities/user.dart';
 
 class UserModel extends Equatable {
-  final String id;
+  final String? id;
   final String name;
   final String email;
   final String address;
@@ -10,7 +10,7 @@ class UserModel extends Equatable {
   final String city;
 
   const UserModel(
-      {required this.id,
+      {this.id,
       required this.name,
       required this.email,
       required this.address,
@@ -27,13 +27,19 @@ class UserModel extends Equatable {
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "name": name,
         "email": email,
         "address": address,
         "phoneNumber": phoneNumber,
         "city": city,
       };
+
+  factory UserModel.fromEntity(User user) => UserModel(
+      name: user.name,
+      email: user.email,
+      address: user.address,
+      phoneNumber: user.phoneNumber,
+      city: user.city);
 
   User toEntity() {
     return User(
@@ -47,5 +53,5 @@ class UserModel extends Equatable {
   }
 
   @override
-  List<Object> get props => [id, name, email, address, phoneNumber, city];
+  List<Object?> get props => [id, name, email, address, phoneNumber, city];
 }

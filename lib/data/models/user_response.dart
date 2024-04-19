@@ -9,10 +9,6 @@ class UserResponse extends Equatable {
   factory UserResponse.fromJson(List<dynamic> json) =>
       UserResponse(userList: json.map((x) => UserModel.fromJson(x)).toList());
 
-  Map<String, dynamic> toJson() => {
-        "user": List<dynamic>.from(userList.map((x) => x.toJson())),
-      };
-
   @override
   List<Object?> get props => [userList];
 }
