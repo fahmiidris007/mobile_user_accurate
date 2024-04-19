@@ -4,5 +4,5 @@ import 'package:mobile_user_accurate/domain/entities/user.dart';
 
 abstract class UserRepository {
   Future<Either<Failure, List<User>>> getUsers();
-  Future<Either<Failure, List<User>>> addUser(User user);
+  Future<Either<Failure, User>> addUser(User user);
 }
