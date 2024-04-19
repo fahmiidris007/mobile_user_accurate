@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobile_user_accurate/common/constants.dart';
 import 'package:mobile_user_accurate/presentation/bloc/add_user/add_user_bloc.dart';
 import 'package:mobile_user_accurate/domain/entities/user.dart';
@@ -8,8 +9,6 @@ import 'package:mobile_user_accurate/presentation/bloc/get_user/get_user_bloc.da
 import '../widgets/form_item.dart';
 
 class AddUserPage extends StatefulWidget {
-  static const routeName = '/add';
-
   const AddUserPage({super.key});
 
   @override
@@ -43,7 +42,7 @@ class _AddUserPageState extends State<AddUserPage> {
                 content: Center(child: Text('User added successfully')),
               ),
             );
-            Navigator.pop(context);
+            context.pop();
           } else if (state is AddUserError) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(

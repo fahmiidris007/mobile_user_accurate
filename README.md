@@ -27,6 +27,7 @@
  - **dartz**: Incorporates functional programming tools into the project.
  - **equatable**: Simplifies object comparison operations.
  - **get_it**: Handles dependency injection efficiently.
+ - **go_router**: Auto route management with lightweight and flexible routing for Flutter applications.
  - **http**: Streamlines HTTP requests within the application.
  - **cupertino_icons**: Offers iOS-style icons for visual elements.
  - **google_fonts**: Google's font library used for text styling purposes.

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobile_user_accurate/common/constants.dart';
 import 'package:mobile_user_accurate/presentation/bloc/get_city/get_city_bloc.dart';
 import 'package:mobile_user_accurate/presentation/bloc/get_user/get_user_bloc.dart';
-import 'package:mobile_user_accurate/presentation/pages/add_user_page.dart';
 import 'package:mobile_user_accurate/presentation/widgets/list_city.dart';
 
 import '../widgets/user_item.dart';
 
 class HomePage extends StatefulWidget {
-  static const routeName = '/home';
-
   const HomePage({super.key});
 
   @override
@@ -49,7 +47,7 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(Icons.add_circle_outline),
             iconSize: 35.0,
             onPressed: () {
-              Navigator.pushNamed(context, AddUserPage.routeName);
+              context.goNamed('add');
             },
             tooltip: 'Add New User',
           ),

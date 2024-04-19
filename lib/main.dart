@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_user_accurate/common/router.dart';
 import 'package:mobile_user_accurate/injection.dart' as di;
 import 'package:mobile_user_accurate/presentation/bloc/add_user/add_user_bloc.dart';
 import 'package:mobile_user_accurate/presentation/bloc/get_city/get_city_bloc.dart';
 import 'package:mobile_user_accurate/presentation/bloc/get_user/get_user_bloc.dart';
-import 'package:mobile_user_accurate/presentation/pages/add_user_page.dart';
-import 'package:mobile_user_accurate/presentation/pages/home_page.dart';
 
 void main() {
   di.init();
@@ -29,20 +28,16 @@ class MyApp extends StatelessWidget {
           create: (context) => di.locator<GetCityBloc>(),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
         title: 'Mobile User Accurate App',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const Center(
-          child: HomePage(),
-        ),
-        routes: {
-          HomePage.routeName: (context) => const HomePage(),
-          AddUserPage.routeName: (context) => const AddUserPage(),
-        },
+        routeInformationParser: router.routeInformationParser,
+        routerDelegate: router.routerDelegate,
+        routeInformationProvider: router.routeInformationProvider,
       ),
     );
   }
