@@ -8,7 +8,7 @@ class AddUser {
 
   AddUser(this.repository);
 
-  Future<Either<Failure, List<User>>> execute(User user) {
+  Future<Either<Failure, User>> execute(User user) {
     return repository.addUser(user);
   }
 }

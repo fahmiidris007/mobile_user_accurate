@@ -8,3 +8,30 @@ sealed class GetUserEvent extends Equatable {
 }
 
 final class GetUser extends GetUserEvent {}
+
+class FilterByCity extends GetUserEvent {
+  final List<String> cities;
+
+  const FilterByCity(this.cities);
+
+  @override
+  List<Object> get props => [cities];
+}
+
+class SearchUser extends GetUserEvent {
+  final String query;
+
+  const SearchUser(this.query);
+
+  @override
+  List<Object> get props => [query];
+}
+
+class SortUsers extends GetUserEvent {
+  final bool sortNameAscending;
+
+  const SortUsers(this.sortNameAscending);
+
+  @override
+  List<Object> get props => [sortNameAscending];
+}
