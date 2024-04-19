@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:mobile_user_accurate/common/exception.dart';
 import 'package:mobile_user_accurate/common/failure.dart';
 import 'package:mobile_user_accurate/data/datasources/user_remote_data_source.dart';
+import 'package:mobile_user_accurate/data/models/user_model.dart';
 import 'package:mobile_user_accurate/domain/entities/user.dart';
 import 'package:mobile_user_accurate/domain/repositories/user_repository.dart';
 
@@ -13,10 +14,11 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<Either<Failure, List<User>>> addUser(User user) async {
+  Future<Either<Failure, User>> addUser(User user) async {
     try {
-      final result = await remoteDataSource.postUsers(user);
-      return Right(result.map((model) => model.toEntity()).toList());
+      final userData = UserModel.fromEntity(user).toJson();
+      final result = await remoteDataSource.postUsers(userData);
+      return Right(result.toEntity());
     } on ServerException {
       return const Left(ServerFailure(''));
     } on SocketException {
